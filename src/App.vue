@@ -4,11 +4,21 @@
       <md-app md-waterfall md-mode="overlap">
         <md-app-toolbar class="md-primary md-large">
           <div class="md-toolbar-row">
-            <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
-              Menü
-            </md-button>
-
-            <span class="md-title">VT Ausbildungs Companion</span>
+            <div class="md-toolbar-section-start">
+              <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
+                Menü
+              </md-button>
+              <span class="md-title">VT Ausbildungs Companion</span>
+            </div>
+            <div class="md-toolbar-section-end">
+              <md-button @click="KW--">
+                -
+              </md-button>
+              <span>KW {{KW}}</span>
+              <md-button @click="KW++">
+                +
+              </md-button>
+            </div>
           </div>
         </md-app-toolbar>
 
@@ -66,6 +76,7 @@ export default {
   },
   data: () => ({
     menuVisible: false,
+    KW: 35,
   }),
   methods: {
     makeInvisible(){
