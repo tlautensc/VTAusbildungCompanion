@@ -20,21 +20,10 @@
           <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>
 
           <md-list>
-            <md-list-item>
-              <md-button @click.native="menuVisible = false" to="/">Ausbildungsnachweise</md-button>
-            </md-list-item>
-
-            <md-list-item>
-              <md-button @click.native="menuVisible = false" to="/dienstplan">Dienstplan</md-button>
-            </md-list-item>
-
-            <md-list-item>
-              <md-button @click.native="menuVisible = false" to="/versetzungsplan">Versetzungsplan</md-button>
-            </md-list-item>
-
-            <md-list-item>
-              <md-button @click.native="menuVisible = false" to="/stundenplan">Stundenplan</md-button>
-            </md-list-item>
+              <md-list-item @click.native="menuVisible = false" to="/">Ausbildungsnachweise</md-list-item>
+              <md-list-item @click.native="menuVisible = false" to="/dienstplan">Dienstplan</md-list-item>
+              <md-list-item @click.native="menuVisible = false" to="/versetzungsplan">Versetzungsplan</md-list-item>
+              <md-list-item @click.native="menuVisible = false" to="/stundenplan">Stundenplan</md-list-item>
           </md-list>
         </md-app-drawer>
 

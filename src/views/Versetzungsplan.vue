@@ -1,29 +1,70 @@
 <template>
   <div>
       <h2>Versetzungsplan</h2>
-      <div class="md-layout md-gutter">
-        <div class="md-layout-item">
+      <div class="md-layout md-gutter md-alignment-top-space-between">
+        <div class="md-layout-item md-size-25">
           <md-list>
-            <md-list-item v-for="(item) in 26" :key="item">
-              KW {{ item }} {{ Versetzung[item-1] }}
+            <md-list-item v-for="(item) in 14" :key="item">
+              <md-content v-bind:class="{ AKW: item==KW }">
+                <div class="md-layout md-gutter">
+                  <div class="md-layout-item">
+                    KW {{ item }} 
+                  </div>
+                  <div class="md-layout-item">
+                    {{ Versetzung[item-1] }}
+                  </div>
+                </div>
+              </md-content>
             </md-list-item>
           </md-list>
         </div>
-        <div class="md-layout-item">
-          <md-content>
-            <h1>
-              Abteilung<br><br>
-              {{Versetzung[KW-1]}}
-            </h1>
-          </md-content>
-        </div>
-        <div class="md-layout-item">
+        <div class="md-layout-item md-size-25">
           <md-list>
-            <md-list-item v-for="(item) in 26" :key="item">
-              KW {{ item+27 }} {{ Versetzung[item+26] }}
+            <md-list-item v-for="(item) in 14" :key="item">
+              <md-content v-bind:class="{ AKW: item+14==KW }">
+                <div class="md-layout md-gutter">
+                  <div class="md-layout-item">
+                    KW {{ item+14 }} 
+                  </div>
+                  <div class="md-layout-item">
+                    {{ Versetzung[item+13] }}
+                  </div>
+                </div>
+              </md-content>
             </md-list-item>
           </md-list>
-
+        </div>
+        <div class="md-layout-item md-size-25">
+          <md-list>
+            <md-list-item v-for="(item) in 14" :key="item">
+              <md-content v-bind:class="{ AKW: item+28==KW }">
+                <div class="md-layout md-gutter">
+                  <div class="md-layout-item">
+                    KW {{ item+28 }} 
+                  </div>
+                  <div class="md-layout-item">
+                    {{ Versetzung[item+27] }}
+                  </div>
+                </div>
+              </md-content>
+            </md-list-item>
+          </md-list>
+        </div>
+        <div class="md-layout-item md-size-25">
+          <md-list>
+            <md-list-item v-for="(item) in 11" :key="item">
+              <md-content v-bind:class="{ AKW: item+42==KW }">
+                <div class="md-layout md-gutter">
+                  <div class="md-layout-item">
+                    KW {{ item+42 }} 
+                  </div>
+                  <div class="md-layout-item">
+                    {{ Versetzung[item+41] }}
+                  </div>
+                </div>
+              </md-content>
+            </md-list-item>
+          </md-list>
         </div>
       </div>
   </div>
@@ -32,29 +73,30 @@
 <script>
 export default {
   data: () => ({
+    test: true,
     Versetzung: [
-      'kw 1',
-      'kw 2',
-      'kw 3',
-      'kw 4',
-      'kw 5',
-      'kw 6',
-      'kw 7',
-      'kw 8',
-      'kw 9',
-      'kw 10',
-      'kw 11',
-      'kw 12',
-      'kw 13',
-      'kw 14',
-      'kw 15',
-      'kw 16',
-      'kw 17',
-      'kw 18',
-      'kw 19',
-      'kw 20',
-      'kw 21',
-      'kw 22',
+      'BEL',
+      'BEL',
+      'BEL',
+      'TT-MT',
+      'TT-MT',
+      'TT-MT',
+      'BT',
+      'BT',
+      'BT',
+      'BS',
+      'BS',
+      'BEL',
+      'BEL',
+      'BEL',
+      'TT-MT',
+      'TT-MT',
+      'TT-MT',
+      'BT',
+      'BT',
+      'BT',
+      'BS',
+      'BS',
       'kw 23',
       'kw 24',
       'kw 25',
@@ -93,5 +135,8 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss" scoped>
+.AKW {
+  color: red;
+}
 </style>

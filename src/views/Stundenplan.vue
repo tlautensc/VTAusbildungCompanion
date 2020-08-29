@@ -38,7 +38,9 @@
         <md-table-cell>{{index + 1}}</md-table-cell>
         <md-table-cell>{{item}}</md-table-cell>
         <md-table-cell v-for="(item) in faecher" :key="item">
-          <md-input v-model="item[index]"></md-input>
+          <md-field>
+            <md-input v-model="item[index]"></md-input>
+          </md-field>
         </md-table-cell>
       </md-table-row>
     </md-table>
