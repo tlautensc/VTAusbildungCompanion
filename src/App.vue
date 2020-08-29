@@ -5,19 +5,13 @@
         <md-app-toolbar class="md-primary md-large">
           <div class="md-toolbar-row">
             <div class="md-toolbar-section-start">
-              <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
-                Menü
-              </md-button>
+              <md-button class="md-icon-button" @click="menuVisible = !menuVisible">Menü</md-button>
               <span class="md-title">VT Ausbildungs Companion</span>
             </div>
             <div class="md-toolbar-section-end">
-              <md-button @click="KW--">
-                -
-              </md-button>
+              <md-button @click="decKW()">-</md-button>
               <span>KW {{KW}}</span>
-              <md-button @click="KW++">
-                +
-              </md-button>
+              <md-button @click="incKW()">+</md-button>
             </div>
           </div>
         </md-app-toolbar>
@@ -41,12 +35,11 @@
             <md-list-item>
               <md-button @click.native="menuVisible = false" to="/stundenplan">Stundenplan</md-button>
             </md-list-item>
-
           </md-list>
         </md-app-drawer>
 
         <md-app-content>
-          <router-view />
+          <router-view v-bind:KW="KW" />
         </md-app-content>
       </md-app>
     </div>
@@ -79,8 +72,22 @@ export default {
     KW: 35,
   }),
   methods: {
-    makeInvisible(){
-      this.menuVisible = false
+    makeInvisible() {
+      this.menuVisible = false;
+    },
+    incKW() {
+      if (this.KW == 53) {
+        this.KW = 1;
+      } else {
+        this.KW++;
+      }
+    },
+    decKW() {
+      if (this.KW == 1) {
+        this.KW = 53;
+      } else {
+        this.KW--;
+      }
     },
   },
 };
