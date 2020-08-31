@@ -9,6 +9,7 @@
               <span class="md-title">VT Ausbildungs Companion</span>
             </div>
             <div class="md-toolbar-section-end">
+              <md-button @click="logout()">Logout</md-button>
               <md-button @click="decKW()">-</md-button>
               <span>KW {{KW}}</span>
               <md-button @click="incKW()">+</md-button>
@@ -20,10 +21,10 @@
           <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>
 
           <md-list>
-              <md-list-item @click.native="menuVisible = false" to="/">Ausbildungsnachweise</md-list-item>
-              <md-list-item @click.native="menuVisible = false" to="/dienstplan">Dienstplan</md-list-item>
-              <md-list-item @click.native="menuVisible = false" to="/versetzungsplan">Versetzungsplan</md-list-item>
-              <md-list-item @click.native="menuVisible = false" to="/stundenplan">Stundenplan</md-list-item>
+              <md-list-item @click="menuVisible = false" to="/ausbildungsnachweise">Ausbildungsnachweise</md-list-item>
+              <md-list-item @click="menuVisible = false" to="/dienstplan">Dienstplan</md-list-item>
+              <md-list-item @click="menuVisible = false" to="/versetzungsplan">Versetzungsplan</md-list-item>
+              <md-list-item @click="menuVisible = false" to="/stundenplan">Stundenplan</md-list-item>
           </md-list>
         </md-app-drawer>
 
@@ -48,6 +49,7 @@
 </style>
 
 <script>
+import {auth} from './firebase/auth'
 import LoremIpsum from "./components/LoremIpsum";
 import Add from "./components/Add";
 export default {
@@ -78,6 +80,14 @@ export default {
         this.KW--;
       }
     },
+    async logout(){
+      await auth.signOut().then(function() {
+        // Sign-out successful.
+      }).catch(function(error) {
+        // An error happened.
+      });
+      this.$router.push("/login")
+    }
   },
 };
 </script>
