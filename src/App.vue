@@ -19,7 +19,6 @@
 
         <md-app-drawer :md-active.sync="menuVisible">
           <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>
-
           <md-list>
               <md-list-item @click="menuVisible = false" to="/ausbildungsnachweise">Ausbildungsnachweise</md-list-item>
               <md-list-item @click="menuVisible = false" to="/dienstplan">Dienstplan</md-list-item>
@@ -87,7 +86,7 @@ export default {
         // An error happened.
       });
       this.$router.push("/login")
-    }
+    },
   },
 };
 </script>

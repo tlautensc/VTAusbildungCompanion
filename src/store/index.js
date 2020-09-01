@@ -1,5 +1,7 @@
 import Vue from 'vue'
+import {vuexfireMutations, firestoreAction} from 'vuexfire'
 import Vuex from 'vuex'
+import {db} from '../firebase/db'
 
 Vue.use(Vuex)
 
@@ -144,8 +146,7 @@ export default new Vuex.Store({
       "SDI",
     ]
   },
-  mutations: {
-  },
+  mutations: vuexfireMutations,
   actions: {
   },
   modules: {
