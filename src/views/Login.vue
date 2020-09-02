@@ -29,7 +29,8 @@ export default {
     methods: {
       async login(){
         await auth.signInWithEmailAndPassword(this.username, this.password)
-        .then(user => { }, 
+        .then(user => { 
+        }, 
         err => {
             alert(err.message)
         })
