@@ -21,10 +21,10 @@ import {auth} from './../firebase/auth'
 import {db} from './../firebase/db'
 export default {
     data: () => ({
-        username,
-        password,
-        newusername,
-        newpassword
+        username: "",
+        password: "",
+        newusername: "",
+        newpassword: "",
     }),
     methods: {
       async login(){
