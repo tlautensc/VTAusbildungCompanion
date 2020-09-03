@@ -49,7 +49,6 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(
           (user) => {
-            const batch = db.batch();
             const newuser = db.collection('Users').doc(this.email);
             const query = newuser.collection('KWs');
 
@@ -75,7 +74,7 @@ export default {
 
             console.log(ende)
 
-            batch.set(newuser, {
+            newuser.set({
               firstname: this.firstname,
               lastname: this.lastname,
               year: this.year
@@ -87,7 +86,7 @@ export default {
                 d = 0 + d;
               }
               var i = y + d;
-              batch.set(query.doc(i.toString()), {
+              query.doc(i.toString()).set({
                 Abteilung: "",
                 Dienst: {
                   Mo: "",
@@ -99,11 +98,15 @@ export default {
                   So: "",
                 },
               });
-              console.log(date1)
-              console.log(i)
-              date1.setDate(date1.getDate() + 7);
+              query.doc(i.toString()).collection('Ausbildungsnachweis').doc('Mo').set({Jobs: [{Job: "", Dauer: 0}]});
+              query.doc(i.toString()).collection('Ausbildungsnachweis').doc('Di').set({Jobs: [{Job: "", Dauer: 0}]});
+              query.doc(i.toString()).collection('Ausbildungsnachweis').doc('Mi').set({Jobs: [{Job: "", Dauer: 0}]});
+              query.doc(i.toString()).collection('Ausbildungsnachweis').doc('Do').set({Jobs: [{Job: "", Dauer: 0}]});
+              query.doc(i.toString()).collection('Ausbildungsnachweis').doc('Fr').set({Jobs: [{Job: "", Dauer: 0}]});
+              query.doc(i.toString()).collection('Ausbildungsnachweis').doc('Sa').set({Jobs: [{Job: "", Dauer: 0}]});
+              query.doc(i.toString()).collection('Ausbildungsnachweis').doc('So').set({Jobs: [{Job: "", Dauer: 0}]});
+              date1.setDate(date1.getDate() + 7); //Update Zählvariable
             };
-            batch.commit();
             this.$router.push("/login");
           },
           (err) => {
